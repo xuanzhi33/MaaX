@@ -2,6 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Serve(inspector)",
+      "request": "launch",
+      "runtimeArgs": [
+        "scripts/serve.mjs"
+      ],
+      "runtimeExecutable": "node",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    
+    {
       "type": "node",
       "request": "launch",
       "name": "Main(inspector)",
@@ -51,6 +64,14 @@
     },
   ],
   "compounds": [
+    {
+      "name": "DEBUG",
+      "configurations": [
+        "Serve(inspector)",
+        "Main(inspector)",
+      ],
+      "preLaunchTask": ""
+    },
     {
       "name": "All(inspector)",
       "configurations": [
