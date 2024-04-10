@@ -11,7 +11,8 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "type": "node"
+      "type": "node",
+      "sourceMaps": true
     },
     
     {
@@ -21,6 +22,7 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "runtimeArgs": [
         "--remote-debugging-port=9222",
+        "--remote-allow-origins=*",
         "${workspaceFolder}/dist/main/index.cjs",
       ],
       "env": {
@@ -35,8 +37,21 @@
       "type": "chrome",
       "request": "launch",
       "name": "Renderer(inspector)",
-      "url": "http://localhost:9222",
-      "webRoot": "${workspaceFolder}/dist/packages/renderer",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--remote-allow-origins=*",
+        "${workspaceFolder}/dist/main/index.cjs",
+      ],
+      "env": {
+        "DEBUG": "true",
+      },
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "sourceMaps": true,
+      "url": "http://localhost:3344",
+      "webRoot": "${workspaceFolder}/packages/renderer",
     },
     {
       "type": "node",
@@ -45,6 +60,8 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "runtimeArgs": [
         "${workspaceFolder}/dist/main/index.cjs",
+        "--remote-debugging-port=9222",
+        "--remote-allow-origins=*",
       ],
       "env": {
         "VITE_DEV_SERVER_HOST": "127.0.0.1",
@@ -65,7 +82,15 @@
   ],
   "compounds": [
     {
-      "name": "DEBUG",
+      "name": "main(DEBUG)",
+      "configurations": [
+        "Serve(inspector)",
+        "Main(inspector)",
+      ],
+      "preLaunchTask": ""
+    },
+    {
+      "name": "Renderer(DEBUG)",
       "configurations": [
         "Serve(inspector)",
         "Main(inspector)",
