@@ -93,7 +93,7 @@
       "name": "Renderer(DEBUG)",
       "configurations": [
         "Serve(inspector)",
-        "Main(inspector)",
+        "Renderer(inspector)",
       ],
       "preLaunchTask": ""
     },
