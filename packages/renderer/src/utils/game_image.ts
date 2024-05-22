@@ -4,7 +4,7 @@ const baseUrl = 'https://media.prts.wiki'
 
 const getFileUrl = (filename: string): string => {
   const hash = String(MD5(filename))
-  return `${baseUrl}/${hash[0]}/${hash.substring(0, 1)}/${filename}`
+  return `${baseUrl}/${hash[0]}/${hash.substring(0, 2)}/${filename}`
 }
 
 export const getOperatorAvatar = (operatorCode: string): string =>
