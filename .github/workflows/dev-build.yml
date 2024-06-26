@@ -51,7 +51,7 @@ jobs:
         run: pnpm i
 
       - name: Compile Electron app
-        run: npm make -- --arch=${{ matrix.arch }}
+        run: npm run make -- --arch=${{ matrix.arch }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
